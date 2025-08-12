@@ -1,0 +1,76 @@
+# ============ Genel =============
+*.swp
+*.swo
+*~
+*.tmp
+*.log
+*.DS_Store
+Thumbs.db
+
+# ============ Visual Studio / .NET =============
+## Build çıktı dosyaları
+bin/
+obj/
+out/
+
+## Kullanıcı ayarları ve geçici dosyalar
+*.user
+*.userosscache
+*.sln.docstates
+
+## Rider / JetBrains
+.idea/
+
+## Test sonuçları
+TestResult*/
+*.VisualState.xml
+*.vspscc
+*_i.c
+*_p.c
+*.pidb
+*.svclog
+*.scc
+
+## Paketler (nuget restore ile yüklenir)
+*.nupkg
+*.snupkg
+packages/
+*.nuget.props
+*.nuget.targets
+
+# VS local cache
+.vs/
+
+# DotCover
+.idea.DotSettings.user
+
+# ASP.NET HTTPS Sertifikaları
+*.pfx
+*.p12
+
+# ============ Node.js / React =============
+## Node modules
+node_modules/
+
+## Build
+dist/
+build/
+
+## Debug log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+## Environment config
+.env
+.env.local
+.env.*.local
+
+# ============ Diğer =============
+## macOS
+.DS_Store
+
+## Windows
+Thumbs.db
+ehthumbs.db
