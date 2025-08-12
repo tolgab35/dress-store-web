@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\thinkpad\\OneDrive - Pamukkale University\\Masa\u00FCst\u00FC\\dress-store-web\\dress-store-web\\dress-store-web\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{73B62030-BB78-45D0-A0EC-AA941FFE8309}|dress-store-web.csproj|c:\\users\\thinkpad\\onedrive - pamukkale university\\masa\u00FCst\u00FC\\dress-store-web\\dress-store-web\\dress-store-web\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73B62030-BB78-45D0-A0EC-AA941FFE8309}|dress-store-web.csproj|solutionrelative:controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73B62030-BB78-45D0-A0EC-AA941FFE8309}|dress-store-web.csproj|c:\\users\\thinkpad\\onedrive - pamukkale university\\masa\u00FCst\u00FC\\dress-store-web\\dress-store-web\\dress-store-web\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73B62030-BB78-45D0-A0EC-AA941FFE8309}|dress-store-web.csproj|solutionrelative:controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73B62030-BB78-45D0-A0EC-AA941FFE8309}|dress-store-web.csproj|c:\\users\\thinkpad\\onedrive - pamukkale university\\masa\u00FCst\u00FC\\dress-store-web\\dress-store-web\\dress-store-web\\dress-store-web.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{73B62030-BB78-45D0-A0EC-AA941FFE8309}|dress-store-web.csproj|solutionrelative:dress-store-web.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "C:\\Users\\thinkpad\\OneDrive - Pamukkale University\\Masa\u00FCst\u00FC\\dress-store-web\\dress-store-web\\dress-store-web\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProductController.cs",
+              "ToolTip": "C:\\Users\\thinkpad\\OneDrive - Pamukkale University\\Masa\u00FCst\u00FC\\dress-store-web\\dress-store-web\\dress-store-web\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "Controllers\\ProductController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T21:26:08.835Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "C:\\Users\\thinkpad\\OneDrive - Pamukkale University\\Masa\u00FCst\u00FC\\dress-store-web\\dress-store-web\\dress-store-web\\Controllers\\CategoryController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CategoryController.cs",
+              "ToolTip": "C:\\Users\\thinkpad\\OneDrive - Pamukkale University\\Masa\u00FCst\u00FC\\dress-store-web\\dress-store-web\\dress-store-web\\Controllers\\CategoryController.cs",
+              "RelativeToolTip": "Controllers\\CategoryController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T21:26:07.439Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "dress-store-web",
+              "DocumentMoniker": "C:\\Users\\thinkpad\\OneDrive - Pamukkale University\\Masa\u00FCst\u00FC\\dress-store-web\\dress-store-web\\dress-store-web\\dress-store-web.csproj",
+              "RelativeDocumentMoniker": "dress-store-web.csproj",
+              "ToolTip": "C:\\Users\\thinkpad\\OneDrive - Pamukkale University\\Masa\u00FCst\u00FC\\dress-store-web\\dress-store-web\\dress-store-web\\dress-store-web.csproj",
+              "RelativeToolTip": "dress-store-web.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-08-12T21:26:01.511Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

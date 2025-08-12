@@ -5,12 +5,13 @@ namespace dress_store_web.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class CategoryController : Controller
+    public class CategoryController : ControllerBase
     {
         private readonly Category category;
-        public IActionResult Index()
+
+        public CategoryController(Category category)
         {
-            return View();
+            this.category = category;
         }
     }
 }

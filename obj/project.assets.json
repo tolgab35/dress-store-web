@@ -453,11 +453,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\thinkpad\\OneDrive - Pamukkale University\\Masaüstü\\dress-store-web\\dress-store-web\\dress-store-web.csproj",
+      "projectUniqueName": "C:\\Users\\thinkpad\\OneDrive - Pamukkale University\\Masaüstü\\dress-store-web\\dress-store-web\\dress-store-web\\dress-store-web.csproj",
       "projectName": "dress-store-web",
-      "projectPath": "C:\\Users\\thinkpad\\OneDrive - Pamukkale University\\Masaüstü\\dress-store-web\\dress-store-web\\dress-store-web.csproj",
+      "projectPath": "C:\\Users\\thinkpad\\OneDrive - Pamukkale University\\Masaüstü\\dress-store-web\\dress-store-web\\dress-store-web\\dress-store-web.csproj",
       "packagesPath": "C:\\Users\\thinkpad\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\thinkpad\\OneDrive - Pamukkale University\\Masaüstü\\dress-store-web\\dress-store-web\\obj\\",
+      "outputPath": "C:\\Users\\thinkpad\\OneDrive - Pamukkale University\\Masaüstü\\dress-store-web\\dress-store-web\\dress-store-web\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
