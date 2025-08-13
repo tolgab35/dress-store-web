@@ -48,6 +48,10 @@ packages/
 *.pfx
 *.p12
 
+# Local development settings (Do not commit secrets)
+appsettings.Development.json
+appsettings.*.local.json
+
 # ============ Node.js / React =============
 ## Node modules
 node_modules/
