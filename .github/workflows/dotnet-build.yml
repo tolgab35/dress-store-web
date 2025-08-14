@@ -13,12 +13,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # NuGet cache: tekrar eden restore’ları hızlandırır
+      # NuGet cache: tekrar eden restore'ları hızlandırır
       - name: Cache NuGet packages
         uses: actions/cache@v4
         with:
           path: ~/.nuget/packages
-          key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj') }}
+          key: nuget-${{ runner.os }}-${{ hashFiles('DressStore/**/*.csproj') }}
           restore-keys: |
             nuget-${{ runner.os }}-
 
@@ -27,12 +27,12 @@ jobs:
         with:
           dotnet-version: "8.0.x"
 
-      - name: Restore
-        run: dotnet restore
+      - name: Restore (solution)
+        run: dotnet restore ./DressStore/DressStore.sln
 
       - name: Build (Release)
-        run: dotnet build --no-restore --configuration Release
+        run: dotnet build ./DressStore/DressStore.sln --no-restore --configuration Release
 
-      # Test eklenince aç:
+      # Testler eklendiğinde aç:
       # - name: Test
-      #   run: dotnet test --no-build --configuration Release --verbosity normal
+      #   run: dotnet test ./DressStore/DressStore.sln --no-build --configuration Release --verbosity normal
