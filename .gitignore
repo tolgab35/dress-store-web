@@ -52,6 +52,9 @@ packages/
 **/appsettings.Development.json
 **/appsettings.*.local.json
 
+# Allow example config files to be committed
+!**/appsettings.Development.example.json
+
 # ============ Node.js / React =============
 ## Node modules
 node_modules/
