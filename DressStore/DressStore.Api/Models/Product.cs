@@ -23,8 +23,8 @@ public class Product
 
     public bool IsActive { get; set; } = true;
 
-    public ICollection<ProductVariant> Variants { get; set; } = new();
-    public ICollection<ProductImage> Images { get; set; } = new();
+    public ICollection<ProductVariant> Variants { get; set; } = new List<ProductVariant>();
+    public ICollection<ProductImage> Images { get; set; } = new List<ProductImage>();
 
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
