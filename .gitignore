@@ -81,3 +81,6 @@ pnpm-debug.log*
 ## Windows
 Thumbs.db
 ehthumbs.db
+
+## IDE document layout ayar dosyaları
+*.Layout.json
