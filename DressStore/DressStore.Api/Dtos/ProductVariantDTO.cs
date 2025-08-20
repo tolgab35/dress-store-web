@@ -1,3 +1,4 @@
+using DressStore.Api.Models;
 namespace DressStore.Api.Dtos;
 
 public class ProductVariantDTO

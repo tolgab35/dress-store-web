@@ -1,4 +1,4 @@
-﻿using dress_store_web.Models;
+﻿using DressStore.Api.Models;
 
 namespace DressStore.Api.Dtos
 {
