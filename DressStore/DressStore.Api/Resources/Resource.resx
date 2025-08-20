@@ -222,11 +222,20 @@
   <data name="ProductUpdated" xml:space="preserve">
     <value>Ürün güncellendi.</value>
   </data>
+  <data name="ProductVariantCreated" xml:space="preserve">
+    <value>Ürün varyantı eklendi.</value>
+  </data>
   <data name="ProductVariantDeleted" xml:space="preserve">
     <value>Ürünün varyantı silindi.</value>
   </data>
   <data name="ProductVariantFound" xml:space="preserve">
     <value>Ürünün varyantı bulundu.</value>
+  </data>
+  <data name="ProductVariantNotFound" xml:space="preserve">
+    <value>Ürün varyantı bulunamadı.</value>
+  </data>
+  <data name="ProductVariantUpdated" xml:space="preserve">
+    <value>Ürün varyantı güncellendi.</value>
   </data>
   <data name="SizeInvalid" xml:space="preserve">
     <value>Geçersiz beden (XS, S, M, L, XL, XXL, XXXL olmalı)</value>

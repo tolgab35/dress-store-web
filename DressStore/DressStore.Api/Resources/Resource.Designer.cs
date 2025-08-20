@@ -376,6 +376,15 @@ namespace DressStore.Api.Resources {
         }
         
         /// <summary>
+        ///   Ürün varyantı eklendi. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string ProductVariantCreated {
+            get {
+                return ResourceManager.GetString("ProductVariantCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ürünün varyantı silindi. benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
         internal static string ProductVariantDeleted {
@@ -390,6 +399,24 @@ namespace DressStore.Api.Resources {
         internal static string ProductVariantFound {
             get {
                 return ResourceManager.GetString("ProductVariantFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ürün varyantı bulunamadı. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string ProductVariantNotFound {
+            get {
+                return ResourceManager.GetString("ProductVariantNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ürün varyantı güncellendi. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string ProductVariantUpdated {
+            get {
+                return ResourceManager.GetString("ProductVariantUpdated", resourceCulture);
             }
         }
         
