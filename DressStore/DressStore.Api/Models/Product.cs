@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace dress_store_web.Models;
+namespace DressStore.Api.Models;
 
 [Index(nameof(Slug), IsUnique = true)]
 public class Product

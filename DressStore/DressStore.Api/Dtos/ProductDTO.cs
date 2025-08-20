@@ -1,4 +1,4 @@
-﻿using dress_store_web.Models;
+﻿using DressStore.Api.Models;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 

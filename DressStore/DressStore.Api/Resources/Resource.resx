@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CategoryCreated" xml:space="preserve">
+    <value>Kategori oluşturuldu.</value>
+  </data>
+  <data name="CategoryDeleted" xml:space="preserve">
+    <value>Kategori silindi.</value>
+  </data>
+  <data name="CategoryFound" xml:space="preserve">
+    <value>Kategori bulundu.</value>
+  </data>
   <data name="CategoryNameRequired" xml:space="preserve">
     <value>Kategori adı girmek zorunludur.</value>
   </data>
@@ -125,6 +134,33 @@
   </data>
   <data name="CategoryNameTooShort" xml:space="preserve">
     <value>Kategori adı çok kısa.</value>
+  </data>
+  <data name="CategoryNotFound" xml:space="preserve">
+    <value>Kategori bulunamadı.</value>
+  </data>
+  <data name="CategoryUpdated" xml:space="preserve">
+    <value>Kategori güncellendi.</value>
+  </data>
+  <data name="ColorFormatInvalid" xml:space="preserve">
+    <value>Renk sadece harf içerebilir.</value>
+  </data>
+  <data name="ColorRequired" xml:space="preserve">
+    <value>Renk gereklidir.</value>
+  </data>
+  <data name="DescriptionTooLong" xml:space="preserve">
+    <value>Açıklama en fazla 1000 karakterden oluşabilir.</value>
+  </data>
+  <data name="EmailFormatInvalid" xml:space="preserve">
+    <value>Geçersiz e-mail formatı.</value>
+  </data>
+  <data name="EmailRequired" xml:space="preserve">
+    <value>E-mail gereklidir.</value>
+  </data>
+  <data name="GenericError" xml:space="preserve">
+    <value>İşlem başarısız.</value>
+  </data>
+  <data name="GenericSuccess" xml:space="preserve">
+    <value>İşlem başarılı.</value>
   </data>
   <data name="ImageUrlInvalid" xml:space="preserve">
     <value>Geçersiz görsel URL'si.</value>
@@ -141,8 +177,35 @@
   <data name="NameRequired" xml:space="preserve">
     <value>Şehir adı boş bırakılamaz.</value>
   </data>
+  <data name="OperationSuccessful" xml:space="preserve">
+    <value>İşlem başarılı.</value>
+  </data>
   <data name="PriceCannotBeNegative" xml:space="preserve">
-    <value>Fiyat negatif olamaz</value>
+    <value>Fiyat negatif olamaz.</value>
+  </data>
+  <data name="ProductCreated" xml:space="preserve">
+    <value>Ürün oluşturuldu.</value>
+  </data>
+  <data name="ProductDeleted" xml:space="preserve">
+    <value>Ürün silindi.</value>
+  </data>
+  <data name="ProductFound" xml:space="preserve">
+    <value>Ürün bulundu.</value>
+  </data>
+  <data name="ProductImageCreated" xml:space="preserve">
+    <value>Ürün görseli eklendi.</value>
+  </data>
+  <data name="ProductImageDeleted" xml:space="preserve">
+    <value>Ürün görseli silindi.</value>
+  </data>
+  <data name="ProductImageFound" xml:space="preserve">
+    <value>Ürün görseli bulundu.</value>
+  </data>
+  <data name="ProductImageNotFound" xml:space="preserve">
+    <value>Ürün görseli bulunamadı.</value>
+  </data>
+  <data name="ProductImageUpdated" xml:space="preserve">
+    <value>Ürün görseli güncellendi.</value>
   </data>
   <data name="ProductNameRequired" xml:space="preserve">
     <value>Ürün adı girmek zorunludur.</value>
@@ -153,14 +216,56 @@
   <data name="ProductNameTooShort" xml:space="preserve">
     <value>Ürün adı çok kısa.</value>
   </data>
+  <data name="ProductNotFound" xml:space="preserve">
+    <value>Ürün bulunamadı.</value>
+  </data>
+  <data name="ProductUpdated" xml:space="preserve">
+    <value>Ürün güncellendi.</value>
+  </data>
+  <data name="ProductVariantCreated" xml:space="preserve">
+    <value>Ürün varyantı eklendi.</value>
+  </data>
+  <data name="ProductVariantDeleted" xml:space="preserve">
+    <value>Ürünün varyantı silindi.</value>
+  </data>
+  <data name="ProductVariantFound" xml:space="preserve">
+    <value>Ürünün varyantı bulundu.</value>
+  </data>
+  <data name="ProductVariantNotFound" xml:space="preserve">
+    <value>Ürün varyantı bulunamadı.</value>
+  </data>
+  <data name="ProductVariantUpdated" xml:space="preserve">
+    <value>Ürün varyantı güncellendi.</value>
+  </data>
+  <data name="SizeInvalid" xml:space="preserve">
+    <value>Geçersiz beden (XS, S, M, L, XL, XXL, XXXL olmalı)</value>
+  </data>
+  <data name="SizeRequired" xml:space="preserve">
+    <value>Beden bilgisi gereklidir.</value>
+  </data>
   <data name="SkuFormatInvalid" xml:space="preserve">
-    <value>SKU formatı geçersiz</value>
+    <value>SKU formatı geçersiz.</value>
     <comment>Sku formatı: siyah-elbise gibi</comment>
   </data>
   <data name="SkuRequired" xml:space="preserve">
     <value>SKU alanı zorunludur.</value>
   </data>
+  <data name="SlugFormatInvalid" xml:space="preserve">
+    <value>Slug sadece küçük harf, rakam ve tire içerebilir. Lütfen tekrar deneyin.</value>
+  </data>
+  <data name="SlugRequired" xml:space="preserve">
+    <value>Slug gereklidir.</value>
+  </data>
+  <data name="SlugTooShort" xml:space="preserve">
+    <value>Slug en az 3 karakterden oluşmalıdır.</value>
+  </data>
   <data name="StockCannotBeNegative" xml:space="preserve">
     <value>Stok negatif olamaz</value>
+  </data>
+  <data name="ValidationError" xml:space="preserve">
+    <value>Doğrulama hatası.</value>
+  </data>
+  <data name="ValidationSuccessful" xml:space="preserve">
+    <value>Doğrulama başarılı.</value>
   </data>
 </root>

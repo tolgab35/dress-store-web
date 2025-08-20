@@ -1,4 +1,4 @@
-namespace dress_store_web.Models;
+namespace DressStore.Api.Models;
 
 public class ProductImage
 {

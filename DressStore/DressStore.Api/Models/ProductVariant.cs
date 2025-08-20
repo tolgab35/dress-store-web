@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace dress_store_web.Models;
+namespace DressStore.Api.Models;
 
 [Index(nameof(Sku), IsUnique = true)]
 public class ProductVariant

@@ -61,6 +61,33 @@ namespace DressStore.Api.Resources {
         }
         
         /// <summary>
+        ///   Kategori oluşturuldu. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string CategoryCreated {
+            get {
+                return ResourceManager.GetString("CategoryCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Kategori silindi. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string CategoryDeleted {
+            get {
+                return ResourceManager.GetString("CategoryDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Kategori bulundu. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string CategoryFound {
+            get {
+                return ResourceManager.GetString("CategoryFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Kategori adı girmek zorunludur. benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
         internal static string CategoryNameRequired {
@@ -84,6 +111,87 @@ namespace DressStore.Api.Resources {
         internal static string CategoryNameTooShort {
             get {
                 return ResourceManager.GetString("CategoryNameTooShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Kategori bulunamadı. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string CategoryNotFound {
+            get {
+                return ResourceManager.GetString("CategoryNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Kategori güncellendi. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string CategoryUpdated {
+            get {
+                return ResourceManager.GetString("CategoryUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Renk sadece harf içerebilir. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string ColorFormatInvalid {
+            get {
+                return ResourceManager.GetString("ColorFormatInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Renk gereklidir. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string ColorRequired {
+            get {
+                return ResourceManager.GetString("ColorRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Açıklama en fazla 1000 karakterden oluşabilir. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string DescriptionTooLong {
+            get {
+                return ResourceManager.GetString("DescriptionTooLong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Geçersiz e-mail formatı. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string EmailFormatInvalid {
+            get {
+                return ResourceManager.GetString("EmailFormatInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   E-mail gereklidir. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string EmailRequired {
+            get {
+                return ResourceManager.GetString("EmailRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   İşlem başarısız. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string GenericError {
+            get {
+                return ResourceManager.GetString("GenericError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   İşlem başarılı. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string GenericSuccess {
+            get {
+                return ResourceManager.GetString("GenericSuccess", resourceCulture);
             }
         }
         
@@ -133,11 +241,92 @@ namespace DressStore.Api.Resources {
         }
         
         /// <summary>
-        ///   Fiyat negatif olamaz benzeri yerelleştirilmiş bir dize arar.
+        ///   İşlem başarılı. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string OperationSuccessful {
+            get {
+                return ResourceManager.GetString("OperationSuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Fiyat negatif olamaz. benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
         internal static string PriceCannotBeNegative {
             get {
                 return ResourceManager.GetString("PriceCannotBeNegative", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ürün oluşturuldu. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string ProductCreated {
+            get {
+                return ResourceManager.GetString("ProductCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ürün silindi. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string ProductDeleted {
+            get {
+                return ResourceManager.GetString("ProductDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ürün bulundu. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string ProductFound {
+            get {
+                return ResourceManager.GetString("ProductFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ürün görseli eklendi. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string ProductImageCreated {
+            get {
+                return ResourceManager.GetString("ProductImageCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ürün görseli silindi. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string ProductImageDeleted {
+            get {
+                return ResourceManager.GetString("ProductImageDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ürün görseli bulundu. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string ProductImageFound {
+            get {
+                return ResourceManager.GetString("ProductImageFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ürün görseli bulunamadı. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string ProductImageNotFound {
+            get {
+                return ResourceManager.GetString("ProductImageNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ürün görseli güncellendi. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string ProductImageUpdated {
+            get {
+                return ResourceManager.GetString("ProductImageUpdated", resourceCulture);
             }
         }
         
@@ -169,7 +358,88 @@ namespace DressStore.Api.Resources {
         }
         
         /// <summary>
-        ///   SKU formatı geçersiz benzeri yerelleştirilmiş bir dize arar.
+        ///   Ürün bulunamadı. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string ProductNotFound {
+            get {
+                return ResourceManager.GetString("ProductNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ürün güncellendi. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string ProductUpdated {
+            get {
+                return ResourceManager.GetString("ProductUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ürün varyantı eklendi. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string ProductVariantCreated {
+            get {
+                return ResourceManager.GetString("ProductVariantCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ürünün varyantı silindi. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string ProductVariantDeleted {
+            get {
+                return ResourceManager.GetString("ProductVariantDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ürünün varyantı bulundu. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string ProductVariantFound {
+            get {
+                return ResourceManager.GetString("ProductVariantFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ürün varyantı bulunamadı. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string ProductVariantNotFound {
+            get {
+                return ResourceManager.GetString("ProductVariantNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ürün varyantı güncellendi. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string ProductVariantUpdated {
+            get {
+                return ResourceManager.GetString("ProductVariantUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Geçersiz beden (XS, S, M, L, XL, XXL, XXXL olmalı) benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string SizeInvalid {
+            get {
+                return ResourceManager.GetString("SizeInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Beden bilgisi gereklidir. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string SizeRequired {
+            get {
+                return ResourceManager.GetString("SizeRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   SKU formatı geçersiz. benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
         internal static string SkuFormatInvalid {
             get {
@@ -187,11 +457,56 @@ namespace DressStore.Api.Resources {
         }
         
         /// <summary>
+        ///   Slug sadece küçük harf, rakam ve tire içerebilir. Lütfen tekrar deneyin. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string SlugFormatInvalid {
+            get {
+                return ResourceManager.GetString("SlugFormatInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Slug gereklidir. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string SlugRequired {
+            get {
+                return ResourceManager.GetString("SlugRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Slug en az 3 karakterden oluşmalıdır. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string SlugTooShort {
+            get {
+                return ResourceManager.GetString("SlugTooShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Stok negatif olamaz benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
         internal static string StockCannotBeNegative {
             get {
                 return ResourceManager.GetString("StockCannotBeNegative", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Doğrulama hatası. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string ValidationError {
+            get {
+                return ResourceManager.GetString("ValidationError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Doğrulama başarılı. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string ValidationSuccessful {
+            get {
+                return ResourceManager.GetString("ValidationSuccessful", resourceCulture);
             }
         }
     }
