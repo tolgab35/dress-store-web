@@ -1,7 +1,7 @@
-﻿using DressStore.Api.Models;
-using DressStore.Api.Data;
-using DressStore.Api.Dtos;
+﻿using DressStore.Api.Dtos;
 using DressStore.Api.Resources;
+using DressStore.Api.Data;
+using DressStore.Api.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DressStore.Api.Services
@@ -17,138 +17,157 @@ namespace DressStore.Api.Services
 
         public async Task<Response<List<ProductVariantDTO>>> GetAllProductVariantsAsync()
         {
-            var variants = await _context.ProductVariants
-                .Select(v => new ProductVariantDTO
+            try
+            {
+                var variants = await _context.ProductVariants.ToListAsync();
+                var dtos = variants.Select(v => new ProductVariantDTO
                 {
+                    Id = v.Id,
                     ProductId = v.ProductId,
                     Size = v.Size,
                     Color = v.Color,
                     Sku = v.Sku,
                     Stock = v.Stock,
                     PriceOverride = v.PriceOverride
-                })
-                .ToListAsync();
+                }).ToList();
 
-            if (variants == null || !variants.Any())
+                return new Response<List<ProductVariantDTO>>
+                {
+                    data = dtos,
+                    success = true,
+                    message = Resource.OperationSuccessful
+                };
+            }
+            catch (Exception ex)
             {
                 return new Response<List<ProductVariantDTO>>
                 {
                     data = null,
                     success = false,
-                    message = Resource.ProductVariantNotFound
+                    message = $"Hata: {ex.Message}"
                 };
             }
-
-            return new Response<List<ProductVariantDTO>>
-            {
-                data = variants,
-                success = true,
-                message = Resource.OperationSuccessful
-            };
         }
 
         public async Task<Response<ProductVariantDTO>> GetProductVariantByIdAsync(int id)
         {
-            var variant = await _context.ProductVariants.FindAsync(id);
-            if (variant == null)
+            try
+            {
+                var variant = await _context.ProductVariants.FindAsync(id);
+                if (variant == null)
+                {
+                    return new Response<ProductVariantDTO>
+                    {
+                        data = null,
+                        success = false,
+                        message = Resource.ProductVariantNotFound
+                    };
+                }
+
+                var dto = new ProductVariantDTO
+                {
+                    Id = variant.Id,
+                    ProductId = variant.ProductId,
+                    Size = variant.Size,
+                    Color = variant.Color,
+                    Sku = variant.Sku,
+                    Stock = variant.Stock,
+                    PriceOverride = variant.PriceOverride
+                };
+
+                return new Response<ProductVariantDTO>
+                {
+                    data = dto,
+                    success = true,
+                    message = Resource.ProductVariantFound
+                };
+            }
+            catch (Exception ex)
             {
                 return new Response<ProductVariantDTO>
                 {
                     data = null,
                     success = false,
-                    message = Resource.ProductVariantNotFound
+                    message = $"Hata: {ex.Message}"
                 };
             }
-
-            var dto = new ProductVariantDTO
-            {
-                ProductId = variant.ProductId,
-                Size = variant.Size,
-                Color = variant.Color,
-                Sku = variant.Sku,
-                Stock = variant.Stock,
-                PriceOverride = variant.PriceOverride
-            };
-
-            return new Response<ProductVariantDTO>
-            {
-                data = dto,
-                success = true,
-                message = Resource.ProductVariantFound
-            };
         }
 
-        public async Task<Response<ProductVariantDTO>> CreateProductVariantAsync(ProductVariantDTO productVariantDto)
+        public async Task<Response<ProductVariantDTO>> CreateProductVariantAsync(ProductVariantDTO dto)
         {
-            var variant = new ProductVariant
+            try
             {
-                ProductId = productVariantDto.ProductId,
-                Size = productVariantDto.Size,
-                Color = productVariantDto.Color,
-                Sku = productVariantDto.Sku,
-                Stock = productVariantDto.Stock,
-                PriceOverride = productVariantDto.PriceOverride
-            };
-            _context.ProductVariants.Add(variant);
-            await _context.SaveChangesAsync();
+                var variant = new ProductVariant
+                {
+                    ProductId = dto.ProductId,
+                    Size = dto.Size,
+                    Color = dto.Color,
+                    Sku = dto.Sku,
+                    Stock = dto.Stock,
+                    PriceOverride = dto.PriceOverride
+                };
+                _context.ProductVariants.Add(variant);
+                await _context.SaveChangesAsync();
 
-            var dto = new ProductVariantDTO
-            {
-                ProductId = variant.ProductId,
-                Size = variant.Size,
-                Color = variant.Color,
-                Sku = variant.Sku,
-                Stock = variant.Stock,
-                PriceOverride = variant.PriceOverride
-            };
-
-            return new Response<ProductVariantDTO>
-            {
-                data = dto,
-                success = true,
-                message = Resource.ProductVariantCreated
-            };
-        }
-
-        public async Task<Response<ProductVariantDTO>> UpdateProductVariantAsync(int id, ProductVariantDTO productVariantDto)
-        {
-            var variant = await _context.ProductVariants.FindAsync(id);
-            if (variant == null)
+                dto.Id = variant.Id;
+                return new Response<ProductVariantDTO>
+                {
+                    data = dto,
+                    success = true,
+                    message = Resource.ProductVariantCreated
+                };
+            }
+            catch (Exception ex)
             {
                 return new Response<ProductVariantDTO>
                 {
                     data = null,
                     success = false,
-                    message = Resource.ProductVariantNotFound
+                    message = $"Hata: {ex.Message}"
                 };
             }
+        }
 
-            variant.Size = productVariantDto.Size;
-            variant.Color = productVariantDto.Color;
-            variant.Sku = productVariantDto.Sku;
-            variant.Stock = productVariantDto.Stock;
-            variant.PriceOverride = productVariantDto.PriceOverride;
-            variant.ProductId = productVariantDto.ProductId;
-
-            _context.ProductVariants.Update(variant);
-            await _context.SaveChangesAsync();
-
-            var dto = new ProductVariantDTO
+        public async Task<Response<ProductVariantDTO>> UpdateProductVariantAsync(int id, ProductVariantDTO dto)
+        {
+            try
             {
-                ProductId = variant.ProductId,
-                Size = variant.Size,
-                Color = variant.Color,
-                Sku = variant.Sku,
-                Stock = variant.Stock,
-                PriceOverride = variant.PriceOverride
-            };
+                var variant = await _context.ProductVariants.FindAsync(id);
+                if (variant == null)
+                {
+                    return new Response<ProductVariantDTO>
+                    {
+                        data = null,
+                        success = false,
+                        message = Resource.ProductVariantNotFound
+                    };
+                }
 
-            return new Response<ProductVariantDTO>
+                variant.Size = dto.Size;
+                variant.Color = dto.Color;
+                variant.Sku = dto.Sku;
+                variant.Stock = dto.Stock;
+                variant.PriceOverride = dto.PriceOverride;
+                variant.ProductId = dto.ProductId;
+                await _context.SaveChangesAsync();
+
+                dto.Id = variant.Id;
+                return new Response<ProductVariantDTO>
+                {
+                    data = dto,
+                    success = true,
+                    message = Resource.ProductVariantUpdated
+                };
+            }
+            catch (Exception ex)
             {
-                data = dto,
-                success = true,
-                message = Resource.ProductVariantUpdated
-            };
+                return new Response<ProductVariantDTO>
+                {
+                    data = null,
+                    success = false,
+                    message = $"Hata: {ex.Message}"
+                };
+            }
         }
 
         public async Task<Response<bool>> DeleteProductVariantAsync(int id)
@@ -171,39 +190,6 @@ namespace DressStore.Api.Services
                 data = true,
                 success = true,
                 message = Resource.ProductVariantDeleted
-            };
-        }
-
-        public async Task<Response<List<ProductVariantDTO>>> GetProductVariantsByProductIdAsync(int productId)
-        {
-            var variants = await _context.ProductVariants
-                .Where(v => v.ProductId == productId)
-                .Select(v => new ProductVariantDTO
-                {
-                    ProductId = v.ProductId,
-                    Size = v.Size,
-                    Color = v.Color,
-                    Sku = v.Sku,
-                    Stock = v.Stock,
-                    PriceOverride = v.PriceOverride
-                })
-                .ToListAsync();
-
-            if (variants == null || !variants.Any())
-            {
-                return new Response<List<ProductVariantDTO>>
-                {
-                    data = null,
-                    success = false,
-                    message = Resource.ProductVariantNotFound
-                };
-            }
-
-            return new Response<List<ProductVariantDTO>>
-            {
-                data = variants,
-                success = true,
-                message = Resource.OperationSuccessful
             };
         }
     }

@@ -1,4 +1,5 @@
 ﻿using DressStore.Api.Models;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -6,6 +7,8 @@ namespace DressStore.Api.Dtos
 {
     public class ProductDTO
     {
+        [BindNever]
+        public int Id { get; set; } // Sadece response için, request'te ignore edilir
         public string Name { get; set; } = null!;
         public string Slug { get; set; } = null!;
         public string? Description { get; set; }

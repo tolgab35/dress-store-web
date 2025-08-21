@@ -1,44 +1,67 @@
-﻿using DressStore.Api.Models;
-using DressStore.Api.Data;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using DressStore.Api.Services;
+using DressStore.Api.Dtos;
 
-namespace dress_store_web.Controllers
+namespace DressStore.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
     public class CategoryController : ControllerBase
     {
-        private readonly AppDbContext _dbContext;
-        public CategoryController(AppDbContext dbContext)
+        private readonly ICategoryService _service;
+
+        public CategoryController(ICategoryService service)
         {
-            _dbContext = dbContext; // Dependency injection ile AppDbContext'i alıyoruz 
-            // bu sayede veritabanı işlemlerini gerçekleştirebiliyoruz
-            // Dependency injection, uygulamanın bağımlılıklarını yönetmeyi kolaylaştırır ve test edilebilirliği artırır.
-
-            // dependency injection nedir? 
-            // Dependency injection, bir sınıfın bağımlılıklarını dışarıdan almasını sağlayan bir tasarım desenidir.
-            // Bu sayede sınıflar arasındaki bağımlılıkları azaltır ve test edilebilirliği artırır.
-            // constructor kullanarak bağımlılıkları enjekte ederiz. böylece tamamen bağımlı olmaz.
-
+            _service = service;
         }
 
         [HttpGet]
-        public async Task<List<Category>> GetCategories()
+        public async Task<IActionResult> GetAll()
         {
-            return await _dbContext.Categories.ToListAsync(); // Veritabanındaki tüm kategorileri listeler
+            var result = await _service.GetAllCategoriesAsync();
+            return Ok(result);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            var result = await _service.GetCategoryByIdAsync(id);
+            return Ok(result);
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddCategory([FromBody] Category category)
+        public async Task<IActionResult> Create([FromBody] CategoryDTO dto)
         {
-            if (category == null)
-            {
-                return BadRequest("Category cannot be null.");
-            }
-            _dbContext.Categories.Add(category); // memory'e ekleniyor, henüz veritabanına kaydedilmedi
-            await _dbContext.SaveChangesAsync(); // veritabanına kaydediliyor
-            return CreatedAtAction(nameof(GetCategories), new { id = category.Id }, category); // CreatedAtAction, yeni oluşturulan kaynağa erişim için URL döner
+            var result = await _service.CreateCategoryAsync(dto);
+            return Ok(result);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] CategoryDTO dto)
+        {
+            var result = await _service.UpdateCategoryAsync(id, dto);
+            return Ok(result);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var result = await _service.DeleteCategoryAsync(id);
+            return Ok(result);
+        }
+
+        [HttpGet("search")]
+        public async Task<IActionResult> Search([FromQuery] string term)
+        {
+            var result = await _service.SearchCategoriesAsync(term);
+            return Ok(result);
+        }
+
+        [HttpGet("by-product/{productId}")]
+        public async Task<IActionResult> GetByProduct(int productId)
+        {
+            var result = await _service.GetCategoriesByProductIdAsync(productId);
+            return Ok(result);
         }
     }
 }

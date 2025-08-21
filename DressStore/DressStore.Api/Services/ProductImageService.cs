@@ -1,7 +1,7 @@
-﻿using DressStore.Api.Models;
-using DressStore.Api.Data;
-using DressStore.Api.Dtos;
+﻿using DressStore.Api.Dtos;
 using DressStore.Api.Resources;
+using DressStore.Api.Data;
+using DressStore.Api.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DressStore.Api.Services
@@ -17,126 +17,155 @@ namespace DressStore.Api.Services
 
         public async Task<Response<List<ProductImageDTO>>> GetAllProductImagesAsync()
         {
-            var productImages = await _context.ProductImages
-                .Select(pi => new ProductImageDTO
+            try
+            {
+                var images = await _context.ProductImages.ToListAsync();
+                var dtos = images.Select(pi => new ProductImageDTO
                 {
-                    Url = pi.Url,
+                    Id = pi.Id,
                     ProductId = pi.ProductId,
+                    Url = pi.Url,
                     IsPrimary = pi.IsPrimary,
                     SortOrder = pi.SortOrder
-                })
-                .ToListAsync();
+                }).ToList();
 
-            if (productImages == null || !productImages.Any())
+                return new Response<List<ProductImageDTO>>
+                {
+                    data = dtos,
+                    success = true,
+                    message = Resource.OperationSuccessful
+                };
+            }
+            catch (Exception ex)
             {
                 return new Response<List<ProductImageDTO>>
                 {
                     data = null,
                     success = false,
-                    message = Resource.ProductImageNotFound
+                    message = $"Hata: {ex.Message}"
                 };
             }
-
-            return new Response<List<ProductImageDTO>>
-            {
-                data = productImages,
-                success = true,
-                message = Resource.OperationSuccessful
-            };
         }
 
         public async Task<Response<ProductImageDTO>> GetProductImageByIdAsync(int id)
         {
-            var productImage = await _context.ProductImages.FindAsync(id);
-            if (productImage == null)
+            try
+            {
+                var image = await _context.ProductImages.FindAsync(id);
+                if (image == null)
+                {
+                    return new Response<ProductImageDTO>
+                    {
+                        data = null,
+                        success = false,
+                        message = Resource.ProductImageNotFound
+                    };
+                }
+
+                var dto = new ProductImageDTO
+                {
+                    Id = image.Id,
+                    ProductId = image.ProductId,
+                    Url = image.Url,
+                    IsPrimary = image.IsPrimary,
+                    SortOrder = image.SortOrder
+                };
+
+                return new Response<ProductImageDTO>
+                {
+                    data = dto,
+                    success = true,
+                    message = Resource.ProductImageFound
+                };
+            }
+            catch (Exception ex)
             {
                 return new Response<ProductImageDTO>
                 {
                     data = null,
                     success = false,
-                    message = Resource.ProductImageNotFound
+                    message = $"Hata: {ex.Message}"
                 };
             }
-            var dto = new ProductImageDTO
-            {
-                Url = productImage.Url,
-                ProductId = productImage.ProductId,
-                IsPrimary = productImage.IsPrimary,
-                SortOrder = productImage.SortOrder
-            };
-            return new Response<ProductImageDTO>
-            {
-                data = dto,
-                success = true,
-                message = Resource.ProductImageFound
-            };
         }
 
-        public async Task<Response<ProductImageDTO>> CreateProductImageAsync(ProductImageDTO productImageDto)
+        public async Task<Response<ProductImageDTO>> CreateProductImageAsync(ProductImageDTO dto)
         {
-            var productImage = new ProductImage
+            try
             {
-                Url = productImageDto.Url,
-                ProductId = productImageDto.ProductId,
-                IsPrimary = productImageDto.IsPrimary,
-                SortOrder = productImageDto.SortOrder
-            };
-            _context.ProductImages.Add(productImage);
-            await _context.SaveChangesAsync();
+                var image = new ProductImage
+                {
+                    ProductId = dto.ProductId,
+                    Url = dto.Url,
+                    IsPrimary = dto.IsPrimary,
+                    SortOrder = dto.SortOrder
+                };
+                _context.ProductImages.Add(image);
+                await _context.SaveChangesAsync();
 
-            var dto = new ProductImageDTO
-            {
-                Url = productImage.Url,
-                ProductId = productImage.ProductId,
-                IsPrimary = productImage.IsPrimary,
-                SortOrder = productImage.SortOrder
-            };
-            return new Response<ProductImageDTO>
-            {
-                data = dto,
-                success = true,
-                message = Resource.ProductImageCreated
-            };
-        }
-
-        public async Task<Response<ProductImageDTO>> UpdateProductImageAsync(int id, ProductImageDTO productImageDto)
-        {
-            var productImage = await _context.ProductImages.FindAsync(id);
-            if (productImage == null)
+                dto.Id = image.Id;
+                return new Response<ProductImageDTO>
+                {
+                    data = dto,
+                    success = true,
+                    message = Resource.ProductImageCreated
+                };
+            }
+            catch (Exception ex)
             {
                 return new Response<ProductImageDTO>
                 {
                     data = null,
                     success = false,
-                    message = Resource.ProductImageNotFound
+                    message = $"Hata: {ex.Message}"
                 };
             }
-            productImage.Url = productImageDto.Url;
-            productImage.ProductId = productImageDto.ProductId;
-            productImage.IsPrimary = productImageDto.IsPrimary;
-            productImage.SortOrder = productImageDto.SortOrder;
-            _context.ProductImages.Update(productImage);
-            await _context.SaveChangesAsync();
+        }
 
-            var dto = new ProductImageDTO
+        public async Task<Response<ProductImageDTO>> UpdateProductImageAsync(int id, ProductImageDTO dto)
+        {
+            try
             {
-                Url = productImage.Url,
-                ProductId = productImage.ProductId,
-                IsPrimary = productImage.IsPrimary,
-                SortOrder = productImage.SortOrder
-            };
-            return new Response<ProductImageDTO>
+                var image = await _context.ProductImages.FindAsync(id);
+                if (image == null)
+                {
+                    return new Response<ProductImageDTO>
+                    {
+                        data = null,
+                        success = false,
+                        message = Resource.ProductImageNotFound
+                    };
+                }
+
+                image.Url = dto.Url;
+                image.IsPrimary = dto.IsPrimary;
+                image.SortOrder = dto.SortOrder;
+                image.ProductId = dto.ProductId;
+                await _context.SaveChangesAsync();
+
+                dto.Id = image.Id;
+                return new Response<ProductImageDTO>
+                {
+                    data = dto,
+                    success = true,
+                    message = Resource.ProductImageUpdated
+                };
+            }
+            catch (Exception ex)
             {
-                data = dto,
-                success = true,
-                message = Resource.ProductImageUpdated
-            };
+                return new Response<ProductImageDTO>
+                {
+                    data = null,
+                    success = false,
+                    message = $"Hata: {ex.Message}"
+                };
+            }
         }
 
         public async Task<Response<bool>> DeleteProductImageAsync(int id)
         {
-            var productImage = await _context.ProductImages.FindAsync(id);
-            if (productImage == null)
+            var image = await _context.ProductImages.FindAsync(id);
+            if (image == null)
             {
                 return new Response<bool>
                 {
@@ -145,8 +174,9 @@ namespace DressStore.Api.Services
                     message = Resource.ProductImageNotFound
                 };
             }
-            _context.ProductImages.Remove(productImage);
+            _context.ProductImages.Remove(image);
             await _context.SaveChangesAsync();
+
             return new Response<bool>
             {
                 data = true,

@@ -183,6 +183,9 @@
   <data name="PriceCannotBeNegative" xml:space="preserve">
     <value>Fiyat negatif olamaz.</value>
   </data>
+  <data name="PriceCannotBeZero" xml:space="preserve">
+    <value>Fiyat sıfır olamaz.</value>
+  </data>
   <data name="ProductCreated" xml:space="preserve">
     <value>Ürün oluşturuldu.</value>
   </data>
@@ -267,5 +270,20 @@
   </data>
   <data name="ValidationSuccessful" xml:space="preserve">
     <value>Doğrulama başarılı.</value>
+  </data>
+  <data name="DescriptionRequired" xml:space="preserve">
+    <value>Açıklama alanı zorunludur.</value>
+  </data>
+  <data name="DescriptionTooShort" xml:space="preserve">
+    <value>Açıklama çok kısa.</value>
+  </data>
+  <data name="UrlRequired" xml:space="preserve">
+    <value>URL alanı zorunludur.</value>
+  </data>
+  <data name="UrlInvalid" xml:space="preserve">
+    <value>Geçersiz URL.</value>
+  </data>
+  <data name="SkuTooShort" xml:space="preserve">
+    <value>SKU çok kısa.</value>
   </data>
 </root>

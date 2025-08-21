@@ -151,11 +151,29 @@ namespace DressStore.Api.Resources {
         }
         
         /// <summary>
+        ///   Açıklama alanı zorunludur. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string DescriptionRequired {
+            get {
+                return ResourceManager.GetString("DescriptionRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Açıklama en fazla 1000 karakterden oluşabilir. benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
         internal static string DescriptionTooLong {
             get {
                 return ResourceManager.GetString("DescriptionTooLong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Açıklama çok kısa. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string DescriptionTooShort {
+            get {
+                return ResourceManager.GetString("DescriptionTooShort", resourceCulture);
             }
         }
         
@@ -255,6 +273,15 @@ namespace DressStore.Api.Resources {
         internal static string PriceCannotBeNegative {
             get {
                 return ResourceManager.GetString("PriceCannotBeNegative", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Fiyat sıfır olamaz. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string PriceCannotBeZero {
+            get {
+                return ResourceManager.GetString("PriceCannotBeZero", resourceCulture);
             }
         }
         
@@ -457,6 +484,15 @@ namespace DressStore.Api.Resources {
         }
         
         /// <summary>
+        ///   SKU çok kısa. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string SkuTooShort {
+            get {
+                return ResourceManager.GetString("SkuTooShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Slug sadece küçük harf, rakam ve tire içerebilir. Lütfen tekrar deneyin. benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
         internal static string SlugFormatInvalid {
@@ -489,6 +525,24 @@ namespace DressStore.Api.Resources {
         internal static string StockCannotBeNegative {
             get {
                 return ResourceManager.GetString("StockCannotBeNegative", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Geçersiz URL. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string UrlInvalid {
+            get {
+                return ResourceManager.GetString("UrlInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   URL alanı zorunludur. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string UrlRequired {
+            get {
+                return ResourceManager.GetString("UrlRequired", resourceCulture);
             }
         }
         
