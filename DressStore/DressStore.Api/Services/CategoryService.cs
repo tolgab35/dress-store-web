@@ -17,78 +17,147 @@ namespace DressStore.Api.Services
 
         public async Task<Response<List<CategoryDTO>>> GetAllCategoriesAsync()
         {
-            var categories = await _context.Categories
-                .Select(c => new CategoryDTO { Name = c.Name })
-                .ToListAsync();
-
-            return new Response<List<CategoryDTO>>
+            try
             {
-                data = categories,
-                success = true,
-                message = Resource.OperationSuccessful
-            };
+                var categories = await _context.Categories.ToListAsync();
+                var dtos = categories.Select(c => new CategoryDTO
+                {
+                    Id = c.Id,
+                    Name = c.Name
+                }).ToList();
+
+                return new Response<List<CategoryDTO>>
+                {
+                    data = dtos,
+                    success = true,
+                    message = Resource.OperationSuccessful
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response<List<CategoryDTO>>
+                {
+                    data = null,
+                    success = false,
+                    message = $"Hata: {ex.Message}"
+                };
+            }
         }
 
         public async Task<Response<CategoryDTO>> GetCategoryByIdAsync(int id)
         {
-            var category = await _context.Categories.FindAsync(id);
-            if (category == null)
+            try
+            {
+                var category = await _context.Categories.FindAsync(id);
+                if (category == null)
+                {
+                    return new Response<CategoryDTO>
+                    {
+                        data = null,
+                        success = false,
+                        message = Resource.CategoryNotFound
+                    };
+                }
+
+                var dto = new CategoryDTO
+                {
+                    Id = category.Id,
+                    Name = category.Name
+                };
+
+                return new Response<CategoryDTO>
+                {
+                    data = dto,
+                    success = true,
+                    message = Resource.CategoryFound
+                };
+            }
+            catch (Exception ex)
             {
                 return new Response<CategoryDTO>
                 {
                     data = null,
                     success = false,
-                    message = Resource.CategoryNotFound
+                    message = $"Hata: {ex.Message}"
                 };
             }
-
-            var dto = new CategoryDTO { Name = category.Name };
-            return new Response<CategoryDTO>
-            {
-                data = dto,
-                success = true,
-                message = Resource.CategoryFound
-            };
         }
 
         public async Task<Response<CategoryDTO>> CreateCategoryAsync(CategoryDTO categoryDto)
         {
-            var category = new Category { Name = categoryDto.Name };
-            _context.Categories.Add(category);
-            await _context.SaveChangesAsync();
-
-            var dto = new CategoryDTO { Name = category.Name };
-            return new Response<CategoryDTO>
+            try
             {
-                data = dto,
-                success = true,
-                message = Resource.CategoryCreated
-            };
-        }
+                var category = new Category
+                {
+                    Name = categoryDto.Name
+                };
+                _context.Categories.Add(category);
+                await _context.SaveChangesAsync();
 
-        public async Task<Response<CategoryDTO>> UpdateCategoryAsync(int id, CategoryDTO categoryDto)
-        {
-            var category = await _context.Categories.FindAsync(id);
-            if (category == null)
+                var dto = new CategoryDTO
+                {
+                    Id = category.Id,
+                    Name = category.Name
+                };
+
+                return new Response<CategoryDTO>
+                {
+                    data = dto,
+                    success = true,
+                    message = Resource.CategoryCreated
+                };
+            }
+            catch (Exception ex)
             {
                 return new Response<CategoryDTO>
                 {
                     data = null,
                     success = false,
-                    message = Resource.CategoryNotFound
+                    message = $"Hata: {ex.Message}"
                 };
             }
+        }
 
-            category.Name = categoryDto.Name;
-            await _context.SaveChangesAsync();
-
-            var dto = new CategoryDTO { Name = category.Name };
-            return new Response<CategoryDTO>
+        public async Task<Response<CategoryDTO>> UpdateCategoryAsync(int id, CategoryDTO categoryDto)
+        {
+            try
             {
-                data = dto,
-                success = true,
-                message = Resource.CategoryUpdated
-            };
+                var category = await _context.Categories.FindAsync(id);
+                if (category == null)
+                {
+                    return new Response<CategoryDTO>
+                    {
+                        data = null,
+                        success = false,
+                        message = Resource.CategoryNotFound
+                    };
+                }
+
+                category.Name = categoryDto.Name;
+                await _context.SaveChangesAsync();
+
+                var dto = new CategoryDTO
+                {
+                    Id = category.Id,
+                    Name = category.Name
+                };
+
+                return new Response<CategoryDTO>
+                {
+                    data = dto,
+                    success = true,
+                    message = Resource.CategoryUpdated
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response<CategoryDTO>
+                {
+                    data = null,
+                    success = false,
+                    message = $"Hata: {ex.Message}"
+                };
+            }
         }
 
         public async Task<Response<bool>> DeleteCategoryAsync(int id)
@@ -115,37 +184,66 @@ namespace DressStore.Api.Services
             };
         }
 
-        public async Task<Response<List<CategoryDTO>>> GetCategoriesByProductIdAsync(int productId)
-        {
-            var product = await _context.Products
-                .Include(p => p.Category)
-                .FirstOrDefaultAsync(p => p.Id == productId);
-
-            var categories = product?.Category != null
-                ? new List<CategoryDTO> { new CategoryDTO { Name = product.Category.Name } }
-                : new List<CategoryDTO>();
-
-            return new Response<List<CategoryDTO>>
-            {
-                data = categories,
-                success = true,
-                message = Resource.OperationSuccessful
-            };
-        }
-
         public async Task<Response<List<CategoryDTO>>> SearchCategoriesAsync(string searchTerm)
         {
-            var categories = await _context.Categories
-                .Where(c => c.Name.Contains(searchTerm))
-                .Select(c => new CategoryDTO { Name = c.Name })
-                .ToListAsync();
-
-            return new Response<List<CategoryDTO>>
+            try
             {
-                data = categories,
-                success = true,
-                message = Resource.OperationSuccessful
-            };
+                var categories = await _context.Categories
+                    .Where(c => c.Name.Contains(searchTerm))
+                    .ToListAsync();
+
+                var dtos = categories.Select(c => new CategoryDTO
+                {
+                    Id = c.Id,
+                    Name = c.Name
+                }).ToList();
+
+                return new Response<List<CategoryDTO>>
+                {
+                    data = dtos,
+                    success = true,
+                    message = Resource.OperationSuccessful
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response<List<CategoryDTO>>
+                {
+                    data = null,
+                    success = false,
+                    message = $"Hata: {ex.Message}"
+                };
+            }
+        }
+
+        public async Task<Response<List<CategoryDTO>>> GetCategoriesByProductIdAsync(int productId)
+        {
+            try
+            {
+                var product = await _context.Products
+                    .Include(p => p.Category)
+                    .FirstOrDefaultAsync(p => p.Id == productId);
+
+                var dtos = product?.Category != null
+                    ? new List<CategoryDTO> { new CategoryDTO { Id = product.Category.Id, Name = product.Category.Name } }
+                    : new List<CategoryDTO>();
+
+                return new Response<List<CategoryDTO>>
+                {
+                    data = dtos,
+                    success = true,
+                    message = Resource.OperationSuccessful
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response<List<CategoryDTO>>
+                {
+                    data = null,
+                    success = false,
+                    message = $"Hata: {ex.Message}"
+                };
+            }
         }
     }
 }

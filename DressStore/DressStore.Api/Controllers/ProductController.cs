@@ -2,6 +2,8 @@
 using DressStore.Api.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using DressStore.Api.Services;
+using DressStore.Api.Dtos;
 
 namespace dress_store_web.Controllers
 {
@@ -10,28 +12,61 @@ namespace dress_store_web.Controllers
     public class ProductController : ControllerBase
     {
         private readonly AppDbContext _dbContext;
-        public ProductController(AppDbContext dbContext)
+        private readonly IProductService _service;
+
+        public ProductController(AppDbContext dbContext, IProductService service)
         {
             _dbContext = dbContext;
+            _service = service;
         }
+
         [HttpGet]
-        public async Task<List<Product>> GetProducts()
+        public async Task<IActionResult> GetAll()
         {
-            return await _dbContext.Products.ToListAsync();
+            var result = await _service.GetAllProductsAsync();
+            return Ok(result);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            var result = await _service.GetProductByIdAsync(id);
+            return Ok(result);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateProduct([FromBody] Product product)
+        public async Task<IActionResult> Create([FromBody] ProductDTO dto)
         {
-            if (product == null)
-            {
-                return BadRequest("Product cannot be null.");
-            }
-            _dbContext.Products.Add(product);
-            await _dbContext.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetProducts), new { id = product.Id }, product);
+            var result = await _service.CreateProductAsync(dto);
+            return Ok(result);
+        }
 
-            //Yazdıklarım CategoryController'daki mantıkla aynı şekilde çalışır.
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] ProductDTO dto)
+        {
+            var result = await _service.UpdateProductAsync(id, dto);
+            return Ok(result);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var result = await _service.DeleteProductAsync(id);
+            return Ok(result);
+        }
+
+        [HttpGet("search")]
+        public async Task<IActionResult> Search([FromQuery] string term)
+        {
+            var result = await _service.SearchProductsAsync(term);
+            return Ok(result);
+        }
+
+        [HttpGet("by-category/{categoryId}")]
+        public async Task<IActionResult> GetByCategory(int categoryId)
+        {
+            var result = await _service.GetProductsByCategoryIdAsync(categoryId);
+            return Ok(result);
         }
     }
     }

@@ -1,7 +1,6 @@
-﻿using DressStore.Api.Models;
-using DressStore.Api.Data;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using DressStore.Api.Services;
+using DressStore.Api.Dtos;
 
 namespace DressStore.Api.Controllers
 {
@@ -9,28 +8,46 @@ namespace DressStore.Api.Controllers
     [Route("api/[controller]")]
     public class ProductImageController : ControllerBase
     {
-        private readonly AppDbContext _dbContext;
-        public ProductImageController(AppDbContext dbContext)
+        private readonly IProductImageService _service;
+
+        public ProductImageController(IProductImageService service)
         {
-            _dbContext = dbContext;
+            _service = service;
         }
+
         [HttpGet]
-        public async Task<List<ProductImage>> GetProductImages()
+        public async Task<IActionResult> GetAll()
         {
-            return await _dbContext.ProductImages.ToListAsync();
+            var result = await _service.GetAllProductImagesAsync();
+            return Ok(result);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            var result = await _service.GetProductImageByIdAsync(id);
+            return Ok(result);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateProductImage([FromBody] ProductImage productImage)
+        public async Task<IActionResult> Create([FromBody] ProductImageDTO dto)
         {
-            if (productImage == null)
-            {
-                return BadRequest("Product image cannot be null.");
-            }
-            _dbContext.ProductImages.Add(productImage);
-            await _dbContext.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetProductImages), new { id = productImage.Id }, productImage);
+            var result = await _service.CreateProductImageAsync(dto);
+            return Ok(result);
         }
-        //aynı mantıkla çalışır.
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] ProductImageDTO dto)
+        {
+            var result = await _service.UpdateProductImageAsync(id, dto);
+            return Ok(result);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var result = await _service.DeleteProductImageAsync(id);
+            return Ok(result);
+        }
     }
 }
